@@ -1,0 +1,44 @@
+{% extends "frm_body.html" %}
+{% block title %}마이 페이지{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block wrap %}
+{% include 'frm_header.html' ignore missing%}
+<div>
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">홈</a></li>
+      <li class="breadcrumb-item">사육장 정보</li>
+  </ol>
+</div>
+<div class="content">
+    <div class="title_wrap">
+      <div class="title_parent">
+        <div class="first"><img src="../static/img/footprint.png" class="left_right_trans"></div><div class="second"><h2 class="text-success">사육장 정보</h2></div><div class="third"><img src="../static/img/footprint.png"></div>
+      </div>
+      <div class="title_info">
+        <h5>반려동물이 내 집처럼 느낄 수 있는 공간, 유토피아</h5>
+        <span class="text-muted">-Sprit of <b><i>DIAMOND</i></b></span>
+      </div>
+    </div>
+  <div class="mypage_cage">
+    {%if cage_list|length == 0 %}
+    등록된 사육장이 존재하지 않습니다.
+    {% endif %}
+    {% for cage in cage_list %}
+      <div class="card mb-3 cage" onclick="location.href='/mypage/cage/n{{loop.index}}'">
+        <h3 class="card-header">{{cage[1]}}</h3>
+        <div class="intro_img"><img src="../static/img/lizard_cage.png" alt="사육장 사진"></div>
+        <div class="card-body">
+          <h5 class="card-title">{{cage[2]}}</h5>
+          <h6 class="card-subtitle text-muted">{{cage[3]}}</h6>
+        </div>
+        <div class="card-footer text-muted">
+          사육장 상태 :
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% include 'frm_footer.html' ignore missing%}
+{% endblock %}

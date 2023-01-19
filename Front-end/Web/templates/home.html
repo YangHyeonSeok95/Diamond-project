@@ -1,0 +1,20 @@
+{% extends "frm_body.html" %}
+{% block title %}홈{% endblock %}
+{% block head %}
+{% block src %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
+{% endblock %}
+{{ super() }}
+{% endblock %}
+{% block wrap %}
+{% include 'frm_header.html' ignore missing%}
+<div class="video_div">
+<video muted autoplay loop class="background_video">
+   <source src="../static/img/lizard_video.mp4" type="video/mp4">
+   <strong>Your browser does not support the video tag.</strong>
+ </video>
+</div>
+{% include 'frm_footer.html' ignore missing%}
+{% endblock %}
